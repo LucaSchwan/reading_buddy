@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "834323012099",
+    "firebase_url": "https://reading-buddy-111fb.firebaseio.com",
+    "project_id": "reading-buddy-111fb",
+    "storage_bucket": "reading-buddy-111fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834323012099:android:5bfd0c98db204847a84c36",
+        "android_client_info": {
+          "package_name": "dev.ehrenschwan.reading_buddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834323012099-o3uu5u2os1ltrld0grkppaqrph5qid8f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.ehrenschwan.reading_buddy",
+            "certificate_hash": "4dc44a17c3f8ab705f4f797c7337cc5692224b48"
+          }
+        },
+        {
+          "client_id": "834323012099-j7ekrp73fka4ep5qogme6jd8evb6nfqu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1D9k5R95s9Bs3XYzSxQdeEe7aKWWcZeQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834323012099-j7ekrp73fka4ep5qogme6jd8evb6nfqu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
