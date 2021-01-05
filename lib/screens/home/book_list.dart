@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:reading_buddy/models/book.dart';
 import 'package:provider/provider.dart';
 import 'package:reading_buddy/screens/home/book_tile.dart';
-import 'package:reading_buddy/screens/shared/laoding.dart';
+import 'package:reading_buddy/screens/shared/loading.dart';
 
 class BookList extends StatefulWidget {
 
@@ -30,6 +30,7 @@ class _BookListState extends State<BookList> {
     }
 
     return loading ? Loading() : ListView.builder(
+      itemExtent: 150.0,
       itemCount: books.length,
       itemBuilder: (context, index) {
         return BookTile(book: books[index], user: widget.user,);

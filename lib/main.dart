@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:reading_buddy/screens/shared/laoding.dart';
+import 'package:reading_buddy/screens/shared/loadingPage.dart';
 import 'package:reading_buddy/screens/wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:reading_buddy/services/auth.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       builder: (context, snapshot) {
         // Check for errors
         if (snapshot.hasError) {
-          return Loading();
+          return LoadingPage();
         }
 
         // Once complete, show your application
@@ -34,9 +34,8 @@ class MyApp extends StatelessWidget {
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
-        return Loading();
+        return LoadingPage();
       },
     );
   }
 }
-

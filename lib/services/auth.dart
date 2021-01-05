@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:reading_buddy/services/database.dart';
 
 class AuthService {
   
@@ -38,6 +39,7 @@ class AuthService {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       User user = result.user;
+      DatabaseService(uid: user.uid).newUserStats();
       return user;
     } catch (e) {
       print(e.toString());

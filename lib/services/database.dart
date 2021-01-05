@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:reading_buddy/models/book.dart';
+import 'package:reading_buddy/models/user_stats.dart';
 
 class DatabaseService {
 
@@ -8,8 +9,9 @@ class DatabaseService {
 
   // collection reference
   final CollectionReference booksCollection = FirebaseFirestore.instance.collection('books');
+  final CollectionReference userStatsCollection = FirebaseFirestore.instance.collection('userStats');
 
-  Future newBook(String title, int pagesNumber, int startsAt) async {
+  Future newBook(String title, int pagesNumber, int startsAt, String coverUrl) async {
     return await booksCollection.add(
       {
         'book_title' : title,
@@ -18,9 +20,24 @@ class DatabaseService {
         'current_page' : startsAt,
         'started_at' : new DateTime.now(),
         'user_uid' : uid,
-        'cover_url' : '',
+        'cover_url' : coverUrl,
       }
     );
+  }
+
+  Future newUserStats() async {
+    return await userStatsCollection.add(
+      {
+        'user_uid' : uid,
+        'created_at' : new DateTime.now(),
+        'last_updated' : new DateTime.now(),
+        'total_pages' : 0.0,
+        'total_books' : 0.0,
+        'books_per_week' : 0.0,
+        'pages_per_week' : 0.0,
+        'pages_per_day' : 0.0,
+      } 
+    ); 
   }
 
   Future updatePageNumber(int newPageNumber, String docId) async {
@@ -52,6 +69,26 @@ class DatabaseService {
   // get books stream
   Stream<List<Book>> get books {
     return booksCollection.where('user_uid', isEqualTo: uid).snapshots()
-    .map(_bookListFromSnapshot);
+      .map(_bookListFromSnapshot);
+  }
+
+  // user stats from snapshot
+  UserStats _userStatsFromSnapshot (QuerySnapshot snapshot) {
+    DocumentSnapshot doc = snapshot.docs[0]; 
+    return UserStats(
+      userUid: doc.data()['user_uid'] ?? '',
+      createdAt: doc.data()['created_at'] ?? '',
+      lastUpdated: doc.data()['last_updated'] ?? '',
+      totalPages: doc.data()['total_pages'] ?? '',
+      booksPerWeek: doc.data()['books_per_week'] ?? '',
+      pagesPerWeek: doc.data()['pages_per_week'] ?? '',
+      pagesPerDay: doc.data()['pages_per_day'] ?? '',
+    );
+  }
+  
+  // get userStats stream
+  Stream<UserStats> get userStats {
+    return userStatsCollection.where('user_uid', isEqualTo: uid).snapshots()
+      .map(_userStatsFromSnapshot);
   }
 }

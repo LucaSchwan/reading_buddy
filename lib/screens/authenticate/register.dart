@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reading_buddy/screens/shared/laoding.dart';
+import 'package:reading_buddy/screens/shared/loading.dart';
 import 'package:reading_buddy/services/auth.dart';
 
 class Register extends StatefulWidget {

@@ -17,29 +17,32 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamProvider<List<Book>>.value(
       value: DatabaseService(uid: user.uid).books,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Reading Buddy'),
-          backgroundColor: Colors.lightBlue,
-          elevation: 0.0,
+      child: new WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Reading Buddy'),
+            backgroundColor: Colors.lightBlue,
+            elevation: 0.0,
+          ),
+          body: BookList(user: user,),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+          floatingActionButton: FloatingActionButton(
+            // isExtended: true,
+            child: Icon(Icons.add),
+            backgroundColor: Colors.lightBlue,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NewBook(user: user)
+                ) 
+              ); 
+            },
+          ),
+          drawer: AppDrawer(user: user,),
         ),
-        body: BookList(user: user,),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-        floatingActionButton: FloatingActionButton(
-          // isExtended: true,
-          child: Icon(Icons.add),
-          backgroundColor: Colors.lightBlue,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => NewBook(user: user)
-              ) 
-            ); 
-          },
-        ),
-      drawer: AppDrawer(user: user,),
-      ),
+      )
     );
   }
 }

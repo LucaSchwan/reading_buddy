@@ -42,10 +42,10 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Need to upload image</string>
+	<string>Allow access to photo library</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Need to upload image</string>
+	<string>Allow access to camera to capture photos</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Need to upload image</string>
+	<string>Allow access to microphone</string>
 </dict>
 </plist>

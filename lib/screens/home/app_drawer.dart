@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:reading_buddy/screens/home/home.dart';
+import 'package:reading_buddy/screens/stats_page/stats_page.dart';
+import 'package:reading_buddy/screens/finished_page/finished_page.dart';
 import 'package:flutter/material.dart';
-import '../../services/auth.dart';
+import 'package:reading_buddy/services/auth.dart';
 
 class AppDrawer extends StatelessWidget {
 
@@ -41,6 +43,28 @@ class AppDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => Home(user: user,)
+                )
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Stats'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => StatsPage(user: user,)
+                )
+              );
+            },
+          ),
+          ListTile(
+            title: Text('Finished Books'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => FinishedPage(user: user,)
                 )
               );
             },
