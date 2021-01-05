@@ -1,8 +1,8 @@
-import 'package:reading_buddy/models/user_stats.dart';
+import 'package:reading_buddy/models/stats.dart';
 
 class StatsService {
   
-  double newAvg(UserStats stats, int add, bool week, bool pages) {
+  double newAvg(Stats stats, int add, bool week, bool pages) {
     double avg;
     int time;
     int newTime;

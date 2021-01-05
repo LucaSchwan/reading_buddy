@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:reading_buddy/models/book.dart';
-import 'package:reading_buddy/models/user_stats.dart';
+import 'package:reading_buddy/models/stats.dart';
 
 class DatabaseService {
 
@@ -73,9 +73,9 @@ class DatabaseService {
   }
 
   // user stats from snapshot
-  UserStats _userStatsFromSnapshot (QuerySnapshot snapshot) {
+  Stats _userStatsFromSnapshot (QuerySnapshot snapshot) {
     DocumentSnapshot doc = snapshot.docs[0]; 
-    return UserStats(
+    return Stats(
       userUid: doc.data()['user_uid'] ?? '',
       createdAt: doc.data()['created_at'] ?? '',
       lastUpdated: doc.data()['last_updated'] ?? '',
@@ -87,7 +87,7 @@ class DatabaseService {
   }
   
   // get userStats stream
-  Stream<UserStats> get userStats {
+  Stream<Stats> get userStats {
     return userStatsCollection.where('user_uid', isEqualTo: uid).snapshots()
       .map(_userStatsFromSnapshot);
   }
